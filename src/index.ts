@@ -1,10 +1,11 @@
 import { Rule, chain, apply, url, move, mergeWith, applyTemplates, filter, noop } from '@angular-devkit/schematics';
 import { strings } from '@angular-devkit/core';
-import phpPackageIntall from './utility/php-package-install';
+import * as path from 'path';
+import { appendTo } from './utility/append-to-file/append-to-file';
 import packageIntall from './utility/package-install';
 
 export default function handler(options: any): Rule {
-  const templateSource = apply(url('./files'), [
+  const templateSource = apply(url('./files/slider'), [
     options.skipTests ? filter(path => !path.endsWith('.spec.ts.template')) : noop(),
     applyTemplates({
       ...strings,
@@ -12,5 +13,6 @@ export default function handler(options: any): Rule {
     }),
     move(options.path)
   ]);
-  return chain([mergeWith(templateSource), packageIntall({ packageName: '@vicoders/support' }), phpPackageIntall({ packageName: 'league/fractal' })]);
+  const block_js_file_path = path.resolve(process.cwd(), 'resources', 'assets', 'scripts', 'blocks', 'index.js');
+  return chain([mergeWith(templateSource), appendTo(block_js_file_path, "import './slider'"), packageIntall({ packageName: 'slick-carousel' })]);
 }

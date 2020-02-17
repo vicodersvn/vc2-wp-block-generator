@@ -6,6 +6,7 @@
     - [Add NPM dependency](#add-npm-dependency)
     - [Install NPM dependency](#install-npm-dependency)
     - [Install PHP package via composer](#install-php-package-via-composer)
+    - [Add new line to a file](#add-new-line-to-a-file)
 
 ## Getting Started
 
@@ -57,6 +58,22 @@ import phpPackageIntall from './utility/php-package-install';
  * @param options.packageManager ["npm", "yarn"]
  */
 phpPackageIntall(options?)
+```
+
+
+### Add new line to a file
+
+```javascript
+import { appendTo } from './utility/append-to-file/append-to-file';
+
+/**
+ * Install NPM dependencies
+ *
+ * @param options NodePackageTaskOptions
+ * @param options.directory
+ * @param options.packageManager ["npm", "yarn"]
+ */
+appendTo(file, content);
 ```
 
 
