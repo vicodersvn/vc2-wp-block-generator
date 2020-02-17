@@ -1,4 +1,4 @@
-import { Rule, chain, apply, url, move, mergeWith, applyTemplates, filter, noop } from '@angular-devkit/schematics';
+import { Rule, chain, apply, url, move, mergeWith, applyTemplates } from '@angular-devkit/schematics';
 import { strings } from '@angular-devkit/core';
 import { WordpressService } from './services/Php/Wordpress/WordpressService';
 import { App } from '@nsilly/container';
