@@ -7,7 +7,6 @@ import * as path from 'path';
 
 export default function handler(options: any): Rule {
   const templateSource = apply(url('./files/slider'), [
-    options.skipTests ? filter(path => !path.endsWith('.spec.ts.template')) : noop(),
     applyTemplates({
       ...strings,
       ...options
@@ -17,7 +16,7 @@ export default function handler(options: any): Rule {
   const block_script = path.resolve(process.cwd(), 'resrources', 'assets', 'scripts', 'blocks', 'index.js');
   return chain([
     mergeWith(templateSource),
-    App.make(WordpressService).declareInServiceProvider('app/Providers/BlockServiceProvider.php', `App\\Blocks\\FancyBoxBlock::class,`),
+    App.make(WordpressService).declareInServiceProvider('app/Providers/BlockServiceProvider.php', `\\App\\Blocks\\FancyBoxBlock::class,`),
     appendTo(block_script, 'import "./slider.js";')
   ]);
 }
