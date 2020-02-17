@@ -6,12 +6,12 @@ use App\Blocks\GutenburgBlock;
 
 class SliderBlock extends GutenburgBlock
 {
-    public $name = 'vc_slider';
-    public $title = 'VC Slider';
-    public $description = 'VC Slider Gutenburg Block';
-    public $category = 'formatting';
-    public $icon = 'images-alt2';
-    public $align = 'full';
+    public $name = '<%= decamelize(name) %>';
+    public $title = '<%= name %>';
+    public $description = '<%= description %>';
+    public $category = '<%= category %>';
+    public $icon = '<%= icon %>';
+    public $align = '<%= align %>';
 
     public function __construct()
     {
@@ -34,7 +34,7 @@ class SliderBlock extends GutenburgBlock
     }
 
     public function render($block)
-    { 
+    {
         // Create id attribute allowing for custom "anchor" value.
         $id = 'slider-' . $block['id'];
         if( !empty($block['anchor']) ) {
@@ -65,7 +65,7 @@ class SliderBlock extends GutenburgBlock
         <div id="<?php echo esc_attr($id); ?>" class="<?php echo esc_attr($className); ?>">
             <?php if( have_rows('slides') ): ?>
                 <div class="slides">
-                    <?php while( have_rows('slides') ): the_row(); 
+                    <?php while( have_rows('slides') ): the_row();
                         $image = get_sub_field('slide_image');
                         $text = get_sub_field('slide_text');
                         $link = get_sub_field('slide_link');
@@ -82,7 +82,7 @@ class SliderBlock extends GutenburgBlock
                                         <a href="<?php echo esc_url($link ); ?>"><?php echo $tlink; ?></a>
                                     </div>
                                 </div>
-                                    
+
                             </div>
                         </div>
                     <?php endwhile; ?>
@@ -91,6 +91,6 @@ class SliderBlock extends GutenburgBlock
                 <p>Please add some slides.</p>
             <?php endif; ?>
         </div>
-<?php        
+<?php
     }
 }

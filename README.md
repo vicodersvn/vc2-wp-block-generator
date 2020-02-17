@@ -40,6 +40,7 @@ import packageIntall from './utility/package-install';
  *
  * @param options NodePackageTaskOptions
  * @param options.directory
+ * @param options.packageName
  * @param options.packageManager ["npm", "yarn"]
  */
 packageIntall(options?)
@@ -55,7 +56,7 @@ import phpPackageIntall from './utility/php-package-install';
  *
  * @param options NodePackageTaskOptions
  * @param options.directory
- * @param options.packageManager ["npm", "yarn"]
+ * @param options.packageName
  */
 phpPackageIntall(options?)
 ```
@@ -69,11 +70,24 @@ import { appendTo } from './utility/append-to-file/append-to-file';
 /**
  * Install NPM dependencies
  *
- * @param options NodePackageTaskOptions
- * @param options.directory
- * @param options.packageManager ["npm", "yarn"]
+ * @param file string
+ * @param content string
  */
 appendTo(file, content);
+```
+
+```javascript
+import { WordpressService } from './services/Php/Wordpress/WordpressService';
+import { App } from '@nsilly/container';
+
+/**
+ * Declare new class in provider
+ *
+ * @param provider string
+ * @param classname string
+ */
+App.make(WordpressService).declareInServiceProvider(provider, classname);
+// App.make(WordpressService).declareInServiceProvider('app/Providers/BlockServiceProvider.php', `App\\Blocks\\FancyBoxBlock::class,`)
 ```
 
 
