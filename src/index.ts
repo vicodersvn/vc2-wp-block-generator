@@ -16,7 +16,7 @@ export default function handler(options: any): Rule {
   const block_script = path.resolve(process.cwd(), 'resrources', 'assets', 'scripts', 'blocks', 'index.js');
   return chain([
     mergeWith(templateSource),
-    App.make(WordpressService).declareInServiceProvider('app/Providers/BlockServiceProvider.php', `\\App\\Blocks\\SliderBlock::class,`),
-    appendTo(block_script, 'import "./slider.js";')
+    App.make(WordpressService).declareInServiceProvider('app/Providers/BlockServiceProvider.php', `\\App\\Blocks\\FancyBoxBlock::class,`),
+    appendTo(block_script, 'import "./_vc2_slider_block";')
   ]);
 }
