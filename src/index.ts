@@ -13,10 +13,10 @@ export default function handler(options: any): Rule {
     }),
     move(options.path)
   ]);
-  const block_script = path.resolve(process.cwd(), 'resrources', 'assets', 'scripts', 'blocks', 'index.js');
+  const block_script = path.resolve(process.cwd(), 'resources', 'assets', 'scripts', 'blocks', 'index.js');
   return chain([
     mergeWith(templateSource),
-    App.make(WordpressService).declareInServiceProvider('app/Providers/BlockServiceProvider.php', `\\App\\Blocks\\FancyBoxBlock::class,`),
+    App.make(WordpressService).declareInServiceProvider('app/Providers/BlockServiceProvider.php', `\\App\\Blocks\\SliderBlock\\SliderBlock::class,`),
     appendTo(block_script, 'import "./_vc2_slider_block";')
   ]);
 }
