@@ -22,7 +22,7 @@
     "@types/node": "^8.0.31",
     "@types/shelljs": "^0.8.6",
     "@vicoders/console": "^2.0.0",
-    "decompress": "^4.2.0",
+    "decompress": "^4.2.1",
     "inquirer": "^7.0.4",
     "jasmine": "^3.3.1",
     "ora": "^4.0.3",
